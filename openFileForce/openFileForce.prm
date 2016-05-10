@@ -1,0 +1,21 @@
+DESKTOP_FOLDER=/home/xavier/Desktop
+FICHIER_COMPTES=$DESKTOP_FOLDER/comptes.ods
+
+
+NB_LIGNES_COMMANDE=`ps -ef | grep $FICHIER_COMPTES | wc -l`
+
+DATE_JOUR=`date +%Y%m%d`
+
+DATE_JOUR_M_1=`date -d "1 day ago" +%Y%m%d`
+
+FIHCIER_TEMOIN=/home/xavier/scripts_cron/openFileForce/temoin.comptes
+
+TEMOIN_JOUR=$FICHIER_TEMOIN-$DATE_JOUR
+TEMOIN_JOUR_M_1=$FICHIER_TEMOIN-$DATE_JOUR_M_1
+
+COMMANDE_OFFICE=/usr/lib/libreoffice/program/soffice.bin --calc $FICHER_COMPTES --splash-pipe=5
+
+LOG_FILE=/home/xavier/scripts_cron/openFileForce/openFileForce.log.$DATE_JOUR
+DATE_MINUTE=`date +"%T"`
+HEURE_LANCEMENT_MIN=18
+HEURE_LANCEMENT_MAX=23
